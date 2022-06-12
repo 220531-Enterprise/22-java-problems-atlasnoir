@@ -50,9 +50,16 @@ public class EvaluationService {
 		 * Value"
 		 */
 		public static String printConversion(double kilometersPerHour) {
-			// TODO Write an implementation for this method declaration
-			return null;
-		}
+			
+			//invalid value checker
+			if (kilometersPerHour < 0) {
+				System.out.println("Invalid Value");
+			}
+			
+			long conversion = toMilesPerHour(kilometersPerHour);
+			
+			System.out.println(kilometersPerHour + " km/h = " + conversion + " mi/h");
+			
 	}
 
 	/**
@@ -75,9 +82,17 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	public String printMegaBytesAndKiloBytes(int XX) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String printMegaBytesAndKiloBytes(int kiloBytes) {
+		
+		int kiloByte = 2500;
+		int megaByte = (kiloBytes / 1024);
+		int remainder = megaByte % 1024;
+		
+		if (kiloBytes < 0) {
+			System.out.println("Invalid Value");
+		} else {
+			System.out.println( kiloBytes + " KB = " + megaByte + " MB and " + remainder + " KB");
+		}
 	}
 
 	/**
@@ -100,8 +115,14 @@ public class EvaluationService {
 	 * If the hourOfDay parameter is less than 0 or greater than 23, return false.
 	 */
 	public boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+		if (!isBarking) {
+			return false;
+		} else if (hourOfDay < 0 || hourOfDay > 23) {
+			return false;
+		} else  if ( hourOfDay < 8 || hourOfDay > 22){
+			return true;
+		}
 	}
 
 	/**
@@ -116,8 +137,15 @@ public class EvaluationService {
 	 * Otherwise, return false;
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
-		// TODO Write an implementation for this method declaration
-		return false;
+		
+		double numOne = firstNum * 1000;
+		double numTwo = secondNum * 1000;
+		
+		if (numOne == numTwo) {
+			return true;
+			
+		} else
+			return false;
 	}
 
 	/**
@@ -133,16 +161,21 @@ public class EvaluationService {
 	static class TeenNumberChecker {
 
 		public static boolean hasTeen(int x, int y, int z) {
-			// TODO Write an implementation for this method declaration
-			return false;
+			
+			if ( isTeen(x) || isTeen(y) || isTeen(z) ) {
+				return true;
+			} else
+				return false;
 		}
 
 		// We can initialize isTeen method first
 		// Then pass the parameter to hasTeen method
 
 		public static boolean isTeen(int number) {
-			// TODO Write an implementation for this method declaration
-			return false;
+			if (number >= 13 && number <= 19) {
+				return true;
+			} else
+				return false;
 		}
 	}
 
@@ -161,9 +194,16 @@ public class EvaluationService {
 	 * XX represents the original value minutes. YY represents the calculated years.
 	 * ZZ represents the calculated days.
 	 */
-	public String printYearsAndDays(long minutes) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public void printYearsAndDays(long minutes) {
+		
+		long xx = minutes;
+		long yy = minutes / 525600;
+		long zz = minutes /1440;
+		
+		if (minutes < 0) {
+			System.out.println("Invalid Value");
+		} else
+			System.out.println(xx + " min = " + yy + " y and " + zz + " d");
 	}
 
 	/**
@@ -176,8 +216,39 @@ public class EvaluationService {
 	 * statement or switch statement whatever is easier for you.
 	 */
 	public String printNumberInWord(int number) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		if (number == 0) {
+			System.out.println("ZERO");
+			
+		} else if (number == 1) {
+			System.out.println("ONE"); 
+			
+		} else if (number == 2) {
+			System.out.println("TWO");
+			
+		} else if (number == 3) {
+			System.out.println("THREE");
+		
+		} else if (number == 4) {
+			System.out.println("FOUR"); 
+			
+		} else if (number == 5) {
+			System.out.println("FIVE");
+			
+		} else if (number == 6) {
+			System.out.println("SIX");
+			
+		} else if (number == 7) {
+			System.out.println("SEVEN"); 
+			
+		} else if (number == 8) {
+			System.out.println("EIGHT");
+			
+		} else if (number == 9) {
+			System.out.println("NINE");
+			
+		} else
+			System.out.println("OTHER");
 	}
 
 	/**
@@ -200,8 +271,13 @@ public class EvaluationService {
 	 * and there is no resulting remainder.
 	 */
 	public int getGreatestCommonDivisor(int first, int second) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+		
+		if (first < 10 || second < 10) {
+			return -1;
+		}
+		
+		if (second == 0) return first;
+		return getGreatestCommonDivisor(second, first%second);
 	}
 
 	/**
